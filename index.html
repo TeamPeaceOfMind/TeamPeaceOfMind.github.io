@@ -30,10 +30,10 @@
 				$("#cancelButton").click(function() {
 					location.href = "pebblejs://close";
 				});
-				$("submitButton").click(function() {
+				$("#submitButton").click(function() {
 					var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(getInputs()));
-					//location.href = location
-					location.href = "pebblejs://close";
+					location.href = location
+					//location.href = "pebblejs://close";
 				});
 				var obj = jQuery.parseJSON(decodeURIComponent(window.location.search.substring(1)));
 				for(key in obj) {
