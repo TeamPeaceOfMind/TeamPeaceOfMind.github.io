@@ -1,73 +1,106 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<title>Configurable</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	    <script>
+			function getInputs() {
+				var inputs = {}
+				$('[type="text"]').each(function(){
+					inputs[$(this).attr('id')] = $(this).val();
+				})
+				return inputs;
+			}
+			$().ready(function() {
+				$("#cancelButton").click(function() {
+					document.location = "pebblejs://close";
+				});
+				$("submitButton").click(function() {
+					var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(getInputs()));
+					document.location = location
+				});
+				var obj = jQuery.parseJSON(decodeURIComponent(window.location.search.substring(1)));
+				for(key in obj) {
+					$("#" + [key]).val(obj[key]);
+					$("#" + [key]).val(obj[key]).slider("refresh");
+				}
+			});
+    	</script>
+
+	</head>
 	<body>
 		<h1>Hello World</h1>
 		<p>I'm hosted with GitHub Pages.</p>
 		<form>
 		Name: <br>
-		<input type="text" name="ownerName">
+		<input type="text" id="ownerName">
 		<br>
 		Phone Number: <br>
-		<input type="text" name="ownerNumber">
+		<input type="text" id="ownerNumber">
 		<br>
 		Email: <br>
-		<input type="text" name="ownerEmail">
+		<input type="text" id="ownerEmail">
 		<br>
 		Contact 1:
 		<br>
 		Name: <br>
-		<input type="text" name="contact1Name">
+		<input type="text" id="contact1Name">
 		<br>
 		Phone Number: <br>
-		<input type="text" name="contact1Number">
+		<input type="text" id="contact1Number">
 		<br>
 		Email: <br>
-		<input type="text" name="contact1Email">
+		<input type="text" id="contact1Email">
 		<br>
 		Contact 2:
 		<br>
 		Name: <br>
-		<input type="text" name="contact2Name">
+		<input type="text" id="contact2Name">
 		<br>
 		Phone Number: <br>
-		<input type="text" name="contact2Number">
+		<input type="text" id="contact2Number">
 		<br>
 		Email: <br>
-		<input type="text" name="contact2Email">
+		<input type="text" id="contact2Email">
 		<br>
 		Contact 3:
 		<br>
 		Name: <br>
-		<input type="text" name="contact3Name">
+		<input type="text" id="contact3Name">
 		<br>
 		Phone Number: <br>
-		<input type="text" name="contact3Number">
+		<input type="text" id="contact3Number">
 		<br>
 		Email: <br>
-		<input type="text" name="contact3Email">
+		<input type="text" id="contact3Email">
 		<br>
 		Contact 4:
 		<br>
 		Name: <br>
-		<input type="text" name="contact4Name">
+		<input type="text" id="contact4Name">
 		<br>
 		Phone Number: <br>
-		<input type="text" name="contact4Number">
+		<input type="text" id="contact4Number">
 		<br>
 		Email: <br>
-		<input type="text" name="contact4Email">
+		<input type="text" id="contact4Email">
 		<br>
 		Contact 5:
 		<br>
 		Name: <br>
-		<input type="text" name="contact5Name">
+		<input type="text" id="contact5Name">
 		<br>
 		Phone Number: <br>
-		<input type="text" name="contact5Number">
+		<input type="text" id="contact5Number">
 		<br>
 		Email: <br>
-		<input type="text" name="contact5Email">
+		<input type="text" id="contact5Email">
 		<br>
-		<input type="submit" value="Submit">
+		<button type="submit" id="cancelButton"> Cancel </button>
+		<button type="submit" id="submitButton"> Submit </button>
 	</body>
 </html>
