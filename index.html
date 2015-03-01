@@ -28,11 +28,11 @@
 					$('#' + elem.id).val(getParameterByName(elem.id));
 				});
 				$("#cancelButton").click(function() {
-					document.location = "pebblejs://close";
+					location.href = "pebblejs://close";
 				});
 				$("submitButton").click(function() {
 					var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(getInputs()));
-					document.location = location
+					location.href = location
 				});
 				var obj = jQuery.parseJSON(decodeURIComponent(window.location.search.substring(1)));
 				for(key in obj) {
