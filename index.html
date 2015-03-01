@@ -12,10 +12,21 @@
 				var inputs = {}
 				$('[type="text"]').each(function(){
 					inputs[$(this).attr('id')] = $(this).val();
-				})
+				});
 				return inputs;
 			}
+
+			function getParameterByName(name) {
+			    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			        results = regex.exec(location.search);
+			    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+			}
+
 			$().ready(function() {
+				$('[type="text"]').each(function(index, elem) {
+					$('#' + elem.id).val(getParameterByName(elem.id));
+				});
 				$("#cancelButton").click(function() {
 					document.location = "pebblejs://close";
 				});
@@ -40,7 +51,7 @@
 		<input type="text" id="ownerName" name="ownerName">
 		<br>
 		Phone Number: <br>
-		<input type="text" id="ownerNumber" name="ownerNumber">
+		<input type="text" id="ownerNumber">
 		<br>
 		Email: <br>
 		<input type="text" id="ownerEmail" name="ownerEmail">
