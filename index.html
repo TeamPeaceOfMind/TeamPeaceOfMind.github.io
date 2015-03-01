@@ -31,8 +31,9 @@
 					location.href = "pebblejs://close";
 				});
 				$("#submitButton").click(function() {
-					var newLocation = "pebblejs://close#" + encodeURIComponent(JSON.stringify(getInputs()));
-					location.href = newLocation;
+					location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(getInputs()));
+					//var newLocation = "pebblejs://close#" + encodeURIComponent(JSON.stringify(getInputs()));
+					//location.href = newLocation;
 					//location.href = "pebblejs://close";
 				});
 				var obj = jQuery.parseJSON(decodeURIComponent(window.location.search.substring(1)));
